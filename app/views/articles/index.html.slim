@@ -1,0 +1,29 @@
+h1 Listing articles
+
+table.table
+  thead
+    tr
+      th Title
+      th Category
+      th Content
+      th Created By
+      th Created At
+      - if user_signed_in?
+        th
+
+  tbody
+    - @articles.each do |article|
+      tr
+        td= link_to article.title, article
+        td= article.category
+        td= article.content
+        td= article.user.try(:email)
+        td= article.created_at.to_date
+        - if user_signed_in? && !current_user.user?
+          td
+            = link_to 'Edit', edit_article_path(article), class: 'btn btn-primary'
+            = link_to 'Delete', article, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger'
+
+br
+- if user_signed_in? && !current_user.user?
+  = link_to 'New Article', new_article_path, class: 'btn btn-primary'

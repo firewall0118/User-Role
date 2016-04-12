@@ -1,0 +1,10 @@
+= simple_form_for(@article) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :content
+    = f.input :category
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
+    = link_to 'Back', articles_path, class: 'btn btn-default'
