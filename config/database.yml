@@ -21,9 +21,12 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
-  database: test_simple
-  encoding: utf8
-  min_messages: warning
-  pool: 5
-  timeout: 5000
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: contest_production
+  pool:     5
+  username: postgres
+  password: postgres
+  template: template0
+
